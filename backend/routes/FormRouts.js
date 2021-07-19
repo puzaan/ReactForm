@@ -7,7 +7,7 @@ import upload from '../middlewares/upload.js'
 router.get('/', showAll);
 //router.post('/addForm',upload.single('avatar'),addForm);
 router.post('/addForm',upload.array('avatar[]'),addForm);
-router.post('/showIndex/:id', showIndex);
+router.get('/showIndex/:id', showIndex);
 router.put('/update/:id',upload.single("avatar"), update);
 router.post('/delete/:id', deletForm)
 

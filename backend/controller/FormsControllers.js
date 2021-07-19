@@ -23,7 +23,7 @@ const showIndex = (req, res, next) =>{
     const form = Form.findById(req.params.id)
     .then(response =>{
         res.json({
-            form,
+            
             response
         })
     })
