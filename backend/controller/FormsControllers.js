@@ -111,4 +111,9 @@ const deletForm = asyncHandler(async(req, res)=> {
 })
 
 
-export {deletForm, update, addForm, showIndex,showAll };
+const avatarPhoto= asyncHandler(async(req, res)=>{
+    console.log(req.files.photo)
+    console.log(req.files.avatar)
+    res.status(200)
+})
+export {deletForm, update, addForm, showIndex,showAll, avatarPhoto };
