@@ -40,8 +40,6 @@ const addForm = (req,res) => {
         name: req.body.name,
         email:req.body.email,
         contactNo: req.body.contactNo,
-        
-
     })
     //for single file
     // if(req.file){
@@ -51,28 +49,13 @@ const addForm = (req,res) => {
     // for multipal file
 
     if(req.files){
-        let path =''
-        req.files.forEach(function(files, index, arr){
-            path = path + files.path + ','
-        })
-        path = path.substring(0, path.lastIndexOf(","))
-        form.avatar = path
+        form.avatar=req.files.avatar[0].originalname;
+        form.photo=req.files.photo[0].originalname;
+
     }
-    form.save()
-    .then(response => {
-        res.json({
-            form,
-            message: 'details is being added'
-        
-    })
-    
-})
-.catch(error => {
-    res.json({
-        message: `error ${error}`
-    })
-})
+    form.save().then((response)=>res.json(response)).catch((e)=> res.json(e))
 }
+
 
 
 const update = asyncHandler(async(req, res)=>{
